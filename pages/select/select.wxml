@@ -1,0 +1,60 @@
+<view class="control" mode="widthFix" >
+
+ <scroll-view class="scroll_panel" scroll-y="true">
+    <view class="category_list_item"   wx:for="{{ frompageid == 4 ? categoryStudyTree : ( frompageid == 2 ? categoryPKTree : categoryTree)}}" wx:key="id"style="background:{{item.color}}">
+      <view class="group0">
+        <view class="item">
+            <image src="{{item.src}}" class="image" mode="widthFix"> </image>
+            <view class="typetitle">{{item.title}}</view>
+        </view>
+      </view>
+      <view class="group1">
+        <view class="scoredetail1" wx:for="{{item.subLevel}}" wx:for-item="subLevel" wx:key="id">
+          <view class='{{subLevel.id > 0 ? "item1":"item1Opacity"}}'>
+            <view class="text" mode="widthFix" style="background: url('{{subLevel.src}}') no-repeat center" id="{{subLevel.id}}" bindtap="onSelect">{{subLevel.subtitle}}</view>
+            <view class="type" style="color:{{item.color}}">{{subLevel.subtitle1 == null ? subLevel.title : subLevel.subtitle1}}</view>
+          </view> 
+        </view>
+       </view>
+       
+      </view>
+      <view style="display:block; height:16rpx;"></view>
+  </scroll-view>
+
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+  </view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="image-fail">
+      <image class="modal-closeimage" bindtap="onClickCloseModal" mode="widthFix" src="../../images/ic_dialog_close.png"></image>
+    </view>
+    <view class="modal-title">暂未开通</view>
+    <button class="modal-subtitle3" bindtap="onClickBack">返回</button>
+  </view>
+
+  <!-- abort dialog -->
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showUpgradeModal}}">
+  </view>
+  <!--view class="modal-dialog" wx:if="{{showUpgradeModal}}">
+    <view class="image-fail">
+      <image class="modal-closeimage" bindtap="onClickOK" mode="widthFix" src="/images/ic_dialog_close.png"></image>
+    </view>
+    <view class="drop-title">恭喜升级!!</view>
+    <button class="modal-subtitle3" bindtap="onClickOK">确定</button>
+  </view>
+  <image class="modal-image" mode="widthFix" src="/images/upgrade.png" wx:if="{{showUpgradeModal}}"></image-->  
+  <!-- abort dialog -->
+
+<!-- dialog upgrade -->
+  <view class="upgrade-dialog" wx:if="{{showUpgradeModal}}">
+    <image class="art_bg" src="/images/ic_bg_art.png"></image>
+    <image class="upgrade-1-bg" mode="widthFix" src='/images/upgrade-1-bg.png'></image>
+    <view class="modal-title">恭喜升级</view>
+    <view class="levelItem">
+      <view class="modal-subtitle">你的等级已升到</view>
+      <text class="levelNum">LV.{{oldLevel + 1}}</text>
+    </view>
+    <button class="modal-subtitle3" bindtap="onClickOK">确定</button>
+  </view>
+  <!-- dialog upgrade end-->
+
+</view>

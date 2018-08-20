@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<view class="control">
+  <view class="score">
+    <view class="group0">
+      <view class="avatar_layout">
+        <image class="userimg" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="nametitle">{{userInfo.nickName}}</view>
+    </view>
+  </view>
+
+<view class="ranking2" >你打败了全球{{rate}}%的用户</view>
+
+<view class="score1">
+    <view class="group0">
+      <view class="score0">{{level}}</view>
+      <view class="title2">等级</view>
+    </view>
+    <view class="group0">
+      <view class="score0">{{worldRanking}}</view>
+      <view class="title2">总排名</view>
+    </view>
+    <view class="group0">
+      <view class="score0">{{friendRanking}}</view>
+      <view class="title2">得分</view>
+    </view>
+  </view>
+  <view class="item0">
+    <view class="item" bindtap="onClickSelf"> 个人挑战总题数:</view>
+    <view class="data">{{totalChallenge}}</view>
+  </view>
+  <view class="item0">
+    <view class="item" bindtap="onClickSelf"> 个人挑战连续答对题数:</view>
+    <view class="data">{{winningStreak}}</view>
+  </view>
+  <view class="item0">
+    <view class="item" bindtap="onClickSelf"> 单场最高得分:</view>
+    <view class="data">{{maxScore}}</view>
+  </view>
+  <view class="item0">
+    <view class="item" bindtap="onClickSelf"> 对战总场次:</view>
+    <view class="data">{{totalInvitation}}</view>
+  </view>
+  <view class="item0">
+    <view class="item" bindtap="onClickSelf"> 对战胜利场次:</view>
+    <view class="data">{{invitationWin}}</view>
+  </view>
+  <!--view class="item0">
+    <view class="item" bindtap="onClickSelf"> 对战胜率:</view>
+    <view class="data">{{invitationWinRate}}</view>
+  </view-->
+  <button class="showScore" open-type='share'>炫耀战绩</button>
+
+</view>

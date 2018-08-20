@@ -1,0 +1,9 @@
+<view class="control">
+  <scroll-view class="scrollview_layout" scroll-y="true">
+    <view class="class_layout">
+      <view class="unlock-grid" wx:for="{{CLASS}}" bindtap="onLevelSelect" wx:key="*this">
+        <text id="{{CLASSID[index]}}" class="class">{{CLASS[index]}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,17 @@
+page {
+    height: 100%;
+}
+button::after{
+    border: none;
+}
+.warp button {
+    width: 100%;
+    height:100%;
+    position: absolute;
+    border-radius:0px 0px 0px 0px;
+    color: transparent;
+    background:transparent no-repeat center center;
+    background-size: cover;   
+    background-image: url('https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/challenge_bg.png');
+
+}

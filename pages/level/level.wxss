@@ -1,0 +1,68 @@
+/**level.wxss**/  
+page{
+  display: block;
+  min-height: 100%;
+  overflow: hidden;
+  position: fixed;
+  background-size: cover;
+  background-image: url('https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/bg_select.jpg');
+}
+
+.scrollview_layout {
+  height: 100vh;
+}
+
+.class_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.lock-grid {  
+  position: relative;  
+  float: left;
+  width: 20%;
+  background:#f0f0f0; 
+  margin: 10rpx 10rpx 2rpx 25rpx;
+  border-radius: 20rpx;
+} 
+.lock-grid:active {  
+  background-color: #eec790;
+}
+.gap{
+  width: 100%;
+  min-height: 100%;
+}
+
+.class {
+  display: flex; 
+  width: 100%; 
+  justify-content:center;
+  color: #8B44C9;
+  font-size: 1.2rem;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  background:#f0f0f0;
+  border-radius: 80rpx;
+} 
+
+.lock:active {  
+  background-color: #eec790;
+}
+
+.control{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.unlock-grid {
+  width: 80%;
+  margin-bottom: 80rpx;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10rpx;
+}

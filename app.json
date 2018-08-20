@@ -1,0 +1,26 @@
+{
+  "pages":[   
+    "pages/home/home",
+    "pages/select/select",
+    "pages/level/level",
+    "pages/challenge/challenge",
+    "pages/competition/competition",
+    "pages/invitation/invitation",
+    "pages/main/main",
+    "pages/ranking/ranking", 
+    "pages/study/study",
+    "pages/logs/logs",
+    "pages/failed/failed",
+    "pages/authorization/authorization"    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#d0d0d0",
+    "navigationBarTitleText": "英语四级百词斩",
+    "navigationBarTextStyle":"black"
+  },
+  "openDataContext": {
+    "deviceOrientation": "landscape",
+    "openDataContext": "src/myOpenDataContext"
+  }
+}

@@ -1,0 +1,187 @@
+<!--index.wxml-->
+<view class="control">
+  <view class="vs_topbanner">
+      <image class="vs_topbanner_bg" mode="widthFix" src="/images/bg_topbanner_vs.png"></image>
+      <view class="userimg-left">
+          <view class="group0">
+            <image class="userinfo-avatar"  src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+          <view class="userleft_info">
+           <view class="nametitle_left">{{userInfo.nickName}}</view>
+           <view class="score_left">{{userInfo1Score}}分</view>
+           </view>
+      </view>
+        
+      <view class="userimg-right">
+        <view class="group0">
+          <image class="userinfo-avatar" src="{{userInfo1.avatarUrl}}" background-size="cover"></image>
+        </view>
+         <view class="userright_info">
+           <view class="nametitle_right">{{userInfo1.nickName}}</view>
+           <view class="score_right">{{userInfo2Score}}分</view>
+           </view>
+      </view>
+
+      <progress class= "progress" color="#F7D535" percent="{{progress}}"/>
+  </view>
+
+  <scroll-view class="scrollview_layout" scroll-y="true">
+    <!-- template 1 -->
+    <view class="{{ showFragment == 1? 'type1':'type1hide'}}">
+      <view class="context">
+        <span class="subject_index_left">(</span>
+        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index_right">/{{questionTotal}})</span>
+        {{question.title}}
+      </view>
+
+      <view class="item0">
+        <image class="answerIndex" id="{{question.answers[0].id}}" bindtap="onClickAnswer" src="{{character[0]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[0].id}}" bindtap="onClickAnswer"> {{question.answers[0].answer}}</view>
+      </view>
+      <view class="item0">
+        <image class="answerIndex"  id="{{question.answers[1].id}}" bindtap="onClickAnswer" src="{{character[1]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[1].id}}" bindtap="onClickAnswer"> {{question.answers[1].answer}}</view>
+      </view>
+      <view class="{{question.answers[2].answer == null? 'item0hide':'item0'}}">
+        <image class="answerIndex"  id="{{question.answers[2].id}}" bindtap="onClickAnswer" src="{{character[2]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[2].id}}" bindtap="onClickAnswer"> {{question.answers[2].answer}}</view>
+      </view>
+      <view class="{{question.answers[3].answer == null? 'item0hide':'item0'}}">
+        <image class="answerIndex"  id="{{question.answers[3].id}}" bindtap="onClickAnswer" src="{{character[3]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[3].id}}" bindtap="onClickAnswer"> {{question.answers[3].answer}}</view>
+      </view>
+    </view>
+    <!-- template 1 end-->
+
+    <!-- template 2 -->
+    <view class="{{ showFragment == 2? 'type2':'type2hide'}}">
+      <view class="context">
+        <span class="subject_index_left">(</span>
+        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index_right">/{{questionTotal}})</span>
+        {{question.title}}
+      </view>
+
+      <image class="type2image" mode="top" src="{{question.title2}}"> </image>
+      <view class="item2">
+        <image class="answerIndex"  id="{{question.answers[0].id}}" bindtap="onClickAnswer" src="{{character[0]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[0].id}}" bindtap="onClickAnswer"> {{question.answers[0].answer}}</view>
+      </view>
+      <view class="item2">
+        <image class="answerIndex"  id="{{question.answers[1].id}}" bindtap="onClickAnswer" src="{{character[1]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[1].id}}" bindtap="onClickAnswer"> {{question.answers[1].answer}}</view>
+      </view>
+      <view class="{{question.answers[2].answer == null? 'item2hide':'item2'}}">
+        <image class="answerIndex"  id="{{question.answers[2].id}}" bindtap="onClickAnswer" src="{{character[2]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[2].id}}" bindtap="onClickAnswer"> {{question.answers[2].answer}}</view>
+      </view>
+      <view class="{{question.answers[3].answer == null? 'item2hide':'item2'}}">
+        <image class="answerIndex"  id="{{question.answers[3].id}}" bindtap="onClickAnswer" src="{{character[3]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[3].id}}" bindtap="onClickAnswer"> {{question.answers[3].answer}}</view>
+      </view>
+    </view>
+    <!-- template 2 end-->
+
+    <!-- template 3 -->
+    <view class="{{ showFragment == 3? 'type3':'type3hide'}}">
+      <view class="context">
+        <span class="subject_index_left">(</span>
+        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index_right">/{{questionTotal}})</span>
+        {{question.title}}
+      </view>
+
+      <view class="imageanswer_layout">
+        <view class="answeritem" wx:for="{{question.answers_img}}" wx:for-item="i" wx:key="id">
+          <view id="{{question.answers[index].id}}" bindtap="onClickAnswer" style="width:{{type3imagesW}}rpx;;height:{{type3imagesH}}rpx;; background-size:100% 100%; background-image:url('{{question.answers_img[index].answer}}')">
+            <image class="answerIndex_onimage" src="{{character[index]}}" mode="widthFix"> </image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- template 3 end-->
+
+    <!-- template 4 -->
+    <view class="{{ showFragment == 4? 'type1':'type1hide'}}">
+      <view class="context">
+        <span class="subject_index_left">(</span>
+        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index_right">/{{questionTotal}})</span>
+        {{question.title}}
+      </view>
+      <view class="item4">
+        <image class="answerIndex"  id="{{question.answers[0].id}}" bindtap="onClickAnswer" src="{{character[0]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[0].id}}" style="color:{{characterBgColor[0]}}" bindtap="onClickAnswer"> {{question.answers[0].answer}}</view>
+      </view>
+      <view class="item4">
+        <image class="answerIndex"  id="{{question.answers[1].id}}" bindtap="onClickAnswer" src="{{character[1]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[1].id}}" style="color:{{characterBgColor[1]}}" bindtap="onClickAnswer"> {{question.answers[1].answer}}</view>
+      </view>
+      <view class="{{question.answers[2].answer == null? 'item4hide':'item4'}}">
+        <image class="answerIndex"  id="{{question.answers[2].id}}" bindtap="onClickAnswer" src="{{character[2]}}" mode="widthFix"> </image>
+        <view class="answer" id="{{question.answers[2].id}}" style="color:{{characterBgColor[2]}}" bindtap="onClickAnswer"> {{question.answers[2].answer}}</view>
+      </view>
+      <view class="{{question.answers[3].answer == null? 'item4hide':'item4'}}">
+        <image class="answerIndex"  id="{{question.answers[3].id}}" bindtap="onClickAnswer" src="{{character[3]}}" mode="widthFix"> </image>
+        <view class="answer" style="color:{{characterBgColor[3]}}" id="{{question.answers[3].id}}" bindtap="onClickAnswer"> {{question.answers[3].answer}}</view>
+      </view>
+    </view>
+    <!-- template 4 end -->
+
+    <!-- template 5 -->
+    <view class="{{ showFragment == 5? 'type5':'type5hide'}}">
+        <view class="context">
+          <span class="subject_index_left">(</span>
+          <span class="subject_index">{{questionIndex+1}}</span>
+          <span class="subject_index_right">/{{questionTotal}})</span>
+          {{question.title}}
+        </view>
+
+        <image class="type2image" mode="top" src="{{question.title2}}"> </image>
+        
+        <view class="imageanswer_layout">
+        <view class="answeritem" wx:for="{{question.answers_img}}" wx:for-item="i" wx:key="id">
+          <view id="{{question.answers[index].id}}" bindtap="onClickAnswer" style="width:{{type3imagesW}}rpx;;height:{{type3imagesH}}rpx;; background-size:100% 100%; background-image:url('{{question.answers_img[index].answer}}')">
+            <image class="answerIndex_onimage" src="{{character[index]}}" mode="widthFix"> </image>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- template 5 end -->
+  </scroll-view>
+  
+  <view class="{{ showFailed? 'failed':'failedhide'}}">
+    <view class="result_layout">
+      <view class="{{ continueRight>1? 'user1result':'user1resulthide'}}">连续答对{{continueRight}}题</view>
+      <view class="space"></view>
+      <view class="{{ continueRight2>1? 'user2result':'user2resulthide'}}">连续答对{{continueRight2}}题</view>
+    </view>
+    <view class="result_layout">
+      <view class="{{continueWin1 >0? 'achievement1':'achievement1hide'}}">{{continueWin1}}连胜</view>
+      <view class="space"></view>
+      <view class="{{continueWin2 >0? 'achievement2':'achievement2hide'}}">{{continueWin2}}连胜</view>
+    </view>
+    <image class="resultImg" mode="withFix" src="{{pkResultImage}}"></image>
+    <view class="centerText">积分+{{userInfo1Score}}</view>
+    <!--view class="line"></view>
+    <view class="retryError">回顾本场对战</view-->
+    <view class="showScore">
+      <image class="item1" mode="widthFix" bindtap="onClickAgain" src="/images/again1.png"></image>
+      <button class="invite_friends" open-type="share">
+        <image class="shareBt" mode="widthFix" src='/images/again3.png'></image>
+      </button>
+    </view>
+  </view>
+
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <image class="modal-closeimage" bindtap="onClickCloseModal" mode="top" src="/images/X.png"></image>
+    <view class="modal-title">挑战结束</view>
+    <view class="modal-subtitle">转发到微信群</view>
+    <view class="modal-subtitle">立刻复活一次继续答题</view>
+    <image class="modal-subimage" bindtap="onClickCloseModal" mode="top" src="/images/bg.png"></image>
+  </view>
+  <image class="modal-image" mode="top" src="/images/8.png" wx:if="{{showModal}}"></image>
+</view>

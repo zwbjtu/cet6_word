@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="control">
+ <scroll-view class="scrollview_layout" scroll-y="true">
+  <view class="root">
+    <view class="head">
+      <view class="user-img">
+          <view class="group0">
+            <button class="userinfo-avatar_btn" id="0" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+              <image  class="userinfo-avatar_cover" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            </button>
+          </view>
+      </view>
+      <view class="group">
+        <view class="nametitle">{{userInfo.nickName}}</view>
+        <view class="rankingitem">
+          <image mode="widthFix" class="winimage" src='../../images/crown.png'></image>
+          <text class="ranking">总排名</text>
+          <text class="ranking1">{{userRanking}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="level">
+      <progress class= "progress" stroke-width='10'
+      activeColor="#FFD36D" backgroundColor="#FFFFFF" percent="{{progress}}"></progress>
+      <view class="empirical">{{levelV}}级</view>
+    </view>
+    <view class="empirical-item">
+      <view class="empirical-text">积分{{empiricalV}}</view>
+      <view class="empirical-text1">还差{{scoreGap}}分即可升{{levelV+1}}级</view>
+    </view>
+  </view>
+   
+   <view class="gridlayout">
+    <button class="item1" id="4" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+      <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_study2.png'></image>
+    </button> 
+
+    <button class="item1" id="1" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+      <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_challenge2.png'></image>
+    </button>  
+
+    <button class="item1" id="2" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+      <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_pk2.png'></image>
+    </button> 
+
+    <button class="item1" id="3" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+      <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_rank2.png'></image>
+    </button> 
+    </view>
+ 
+  <button class="invite_friends" open-type="share" >
+      <image class="invite_friends_iv"  src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_invite.png'></image>
+    </button> 
+
+  </scroll-view>
+
+</view>

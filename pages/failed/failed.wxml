@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="control"  mode="widthFix" style="background-image: url('https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/challenge_bg.png'); background-size:cover">
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+  </view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="image-fail">
+      <image class="modal-closeimage" bindtap="onClickCloseModal" mode="widthFix" src="/images/fail2.png"></image>
+    </view>
+    <view class="modal-title">挑战结束</view>
+    <view class="modal-subtitle">转发到微信群</view>
+    <view class="modal-subtitle2">立刻复活一次继续答题</view>
+    <button class="modal-subtitle3" open-type='share'>去复活</button>
+  </view>
+  <image class="modal-image" mode="widthFix" src="/images/fail.png" wx:if="{{showModal}}"></image>
+</view>

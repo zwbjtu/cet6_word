@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="control">
+  <view class="score1">
+      <view bindtap="onClickWorldRanking" class="{{ rankingType == 2?'rankingitem-active':'rankingitem'}}">世界排名</view>
+      <view bindtap="onClickCategoryRanking" class="{{ rankingType == 3?'rankingitem-active':'rankingitem'}}">科目排名</view>
+  </view>
+  <view class="list_bg" style='background: rgba(0, 0, 0, 0.65);'>
+    <view class="list_top_ranking" >
+
+      <view class="{{ rankingType == 3?'categoryItemHide':'categoryItemHide'}}">
+        <view class="choose_category">选择科目</view>
+        <view class="selectItem" bindtap="onClickSelectCategory">
+          <view class="categoryRanking">{{categoryTitle}}</view>
+          <image class="arrow" mode="widthFix"src='/images/ic_dialog_popup.png'></image>
+        </view>
+      </view>
+ 
+      <view class="{{rankingType == 3?'myRankingItem':'myRankingItemSingle'}}">
+        <view class="myRanking">我的排名</view>
+        <view class="myRanking_number">{{rankingType == 3 ? myCategoryRanking : myGlobalRanking}}</view>
+      </view>
+    </view>
+
+    <scroll-view class="{{rankingType == 3?'scrollview_layout_category':'scrollview_layout_world'}}" scroll-y="true" upper-threshold="10"  lower-threshold="10" bindscrolltoupper="onScrolltoupper" bindscrolltolower="onScrolltolower">
+      <view class="list" wx:for="{{datalist}}" wx:for-item="i" wx:key="id">
+        <view class="item" style='background: rgba(35, 30, 41, 0.5);'>
+          <view class="ranking" style="background-color: {{idxbgcolorlist[index]}};">{{datalist[index].ranking}}</view>
+          <image class="userimg" src="{{datalist[index].src}}" background-size="cover"></image>
+          <image class="userimg_crown" src="{{crownlist[index]}}"  ></image>
+          <view class="group0">
+            <view class="name">{{datalist[index].name}}</view>
+            <view class="level">等级:{{datalist[index].level}}</view>
+          </view>
+          <view class="rate-title">积分:</view>
+          <view class="rate">{{rankingType == 3 ? datalist[index].score : datalist[index].total_score}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class="showScore" open-type='share'>炫耀排名</button>
+  </view>
+
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showCategoryList}}">
+  </view>
+
+  <view class="categoryList" wx:if="{{showCategoryList}}">
+    <image class="dialog_close" bindtap="onSelectDialogClose" src="/images/ic_dialog_white_close.png"></image>
+    <scroll-view class="category_scrollview" scroll-y="true" upper-threshold="10"  lower-threshold="10" bindscrolltolower="onScrolltolowerCategory">
+      <view class="list_layout">
+      <view class="list" wx:for="{{categoryList}}" wx:for-item="i" wx:key="id">
+        <view class="categoryText" data-idx="{{index}}" id="{{categoryList[index].subId}}" bindtap="onSelectCategory" >
+        {{categoryList[index].title == categoryList[index].subtitle1 ? categoryList[index].subtitle1 : categoryList[index].title + categoryList[index].subtitle1}}
+        </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>  <!-- abort dialog -->
+  <!--view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{loading}}">
+  </view-->
+  <!--image class="modal-image" mode="widthFix" src="/images/loading.gif" wx:if="{{loading}}"></image-->
+  <loading class="loading-image" hidden="{{!loading}}">正在加载</loading>
+
+</view>
+  

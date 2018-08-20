@@ -1,0 +1,396 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx; 
+  border-radius: 50%;
+  border: 4rpx solid #ffffff;
+  padding: 0;
+  background: none !important;  
+}
+
+.userinfo-avatar_btn {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  width: 136rpx;
+  height: 136rpx;
+  padding: 0;
+  margin-top: 16rpx;
+  margin-left: 20rpx;
+  background: none !important;  
+}
+
+.userinfo-avatar_cover {
+   width: 124rpx;
+   height: 124rpx;
+   border-radius: 50%;
+   border: 6rpx #ffffff solid;
+   background-size: 100% 100%;
+   background: none !important; 
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+page{
+  display: block;
+  min-height: 100%;
+  overflow: hidden;
+  position: fixed;
+  background-size: 100% 100%;
+  margin: 0px;
+  background-image: url('http://static3-cdn.scloud.lfengmobile.com/800000026-mokao/homeback.jpg');
+}
+.canvas{
+    width: 100%;
+    margin-left: 20rpx;
+}
+.invite{
+  padding-top: 20rpx;
+}
+
+.canvasOverflow{
+    width: 100%;
+}
+.control{
+    width: 100%;
+    height: 100%;
+}
+.rankingitem{
+  display: flex;
+  margin-top: 18rpx;
+}
+.head {
+    display: flex;
+    margin-left: 1rpx;
+    margin-right: 3rpx;
+    height: 170rpx;
+}
+
+.level {
+  display: flex;
+  margin-top: 20rpx;
+}
+.root{
+  margin-bottom:20rpx;
+}
+.empirical-item {
+    display: flex;
+    margin-left: 46rpx;
+    margin-right: 120rpx;
+}
+.empirical-text {
+    flex:2;
+    margin-right: 30rpx;
+     margin-top: 10rpx;
+    font-size: 0.9rem;
+    color:rgba(255, 247, 254, 0.6);
+}
+.empirical-text1 {
+    text-align: right;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
+    font-size: 0.9rem;
+    color:rgba(255, 247, 254, 0.6);
+}
+.rule{
+  flex:1;
+    background:#173645;
+    color:#ff3429;
+    margin: 2rpx 2rpx;
+    text-align: center;
+    border-radius: 2rpx;  
+}
+
+.group{
+  flex:4;
+  margin-left: 20rpx;
+
+}
+.group1{
+    flex:1;
+}
+.group0{
+    flex:1;
+    margin: 0rpx 0rpx 0rpx 0rpx;
+    border-radius: 10rpx;
+    font-size: 1.4rem;
+}
+.sub_group{  
+  flex-direction: row;
+}  
+
+.title{
+    flex:1;
+    height: 120rpx;
+    line-height: 120rpx;
+    background:#285872;
+    color:aliceblue;
+    margin: 10rpx 10rpx 10rpx 10rpx;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.gridlayout {
+   display: flex;
+   flex-direction: row;
+   flex-wrap:wrap;
+   justify-content: space-between;
+}
+
+.item{
+  margin-left: 25rpx;
+  margin-right: 23rpx;
+  width: 690rpx;
+  height: 480rpx;
+  border:none;
+  background-size: 690rpx 480rpx;
+  background-repeat:no-repeat;
+ 
+}
+
+.item2{
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+}
+
+item1::after{
+  border: none;
+}
+.free-btn-bordernone::after{
+  border: none;
+}
+.item1{
+  flex: 0 0 45%;
+  border:none;
+  flex-grow:1;
+  background: none !important;
+}
+
+button::after{
+border:none;
+}
+.user-img{
+  flex:1;
+  color:aliceblue;
+  margin-left: 26rpx;
+}
+.scoredetail1{
+    flex:1;
+    color:aliceblue;
+    margin: 10rpx;
+    padding: 5rpx;
+    text-align: center;
+}
+
+
+.nametitle{
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-left: 20rpx;
+    margin-bottom: 10rpx;
+}
+.winimage{
+  padding-left: 20rpx; 
+  width:80rpx;
+  height:90rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50rpx 0rpx 0rpx 50rpx; 
+}
+.ranking{
+    font-size: 1rem;
+    font-weight:lighter;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    flex-direction: column;  
+    justify-content: center;
+}
+.ranking1{
+    font-size: 1.6rem;
+    color: #f8bb39;
+    padding-right: 30rpx;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+     background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0rpx 50rpx 50rpx 0rpx; 
+}
+
+.progress{
+  flex:5;
+  margin-left: 46rpx;
+  border-radius:200rpx;
+  overflow:hidden;
+}
+
+.empirical{
+  flex: 1;
+  padding-left: 18rpx;
+  font-size: 1.4rem;
+  line-height: 16rpx;
+  color: #f8bb39;
+}
+.subtitle{
+    padding-top: 10rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 40rpx;
+    color: #f5ede4;
+}
+.scorenumber{
+    font-size: 1.0rem;
+    line-height: 50rpx;
+    text-align: center;
+}
+
+.nodeTitle{
+    font-size: 1.0rem;
+    line-height: 40rpx;
+    font-weight: bold;
+}
+.node{
+    padding-top: 10rpx;
+    font-size: 1.2rem;
+    line-height: 50rpx;
+    text-align: center;
+}
+
+.descmax{
+    font-size: 0.8rem;
+    line-height: 40rpx;
+}
+.scoremax{
+    line-height: 50rpx;
+    text-align: center;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #151515;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #151515;
+}
+
+.modal-dialog {
+  width: 700rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 60%;
+  z-index: 9999;
+  background: #252525;
+  margin: 20rpx 20rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  font-size: 36rpx;
+  color: #dedede;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-normal {
+  width: 50%;
+  color: #dedede;
+  text-align: center;
+}
+
+.btn-select {
+  width: 50%;
+  color: aliceblue;
+  text-align: center;
+  border-right: 1px solid #dedede;
+  border-left: 1px solid #dedede;
+}
+
+.buttonsStyle{
+    color:#e853b8;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20rpx;
+    border-radius: 60rpx;
+    flex-direction: column;  
+    justify-content: center;
+}
+
+.buttontest {
+  width: 296rpx;
+  height: 130rpx;
+  margin-top: 10rpx;
+  text-align: center;
+  font-size: 1.1em;
+  color: #FFFFFF;
+  justify-content: center;
+  line-height: 124rpx;
+  background-size: 296rpx 130rpx;
+  background-repeat:no-repeat;
+  background-image: url('https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/btn_invite_friends_bg.png');
+  border:none;
+}
+
+.invite_friends {
+  width: 100%;
+  height: 105rpx;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  border:none;
+  background-repeat:no-repeat;
+  background: none !important;  
+}
+
+.invite_friends_iv {
+  width: 80%;
+  height: 100%;
+}
+
+.scrollview_layout {
+  height: 100vh;
+}
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}

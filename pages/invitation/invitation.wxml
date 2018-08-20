@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="control">
+  <view class="title" bindtap="onClickSelf"> {{invitationTitle}}</view>
+  <view class="ticker"  wx:if="{{showTicker}}"> 00:{{timeTickStr}}</view>
+  <view class="score">
+    <view class="group0">
+      <view class="avatar_layout">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="nametitle">{{userInfo.nickName}}</view>
+    </view>
+    <image  class="vs" src="/images/vs.png" mode="withFix"></image>
+    <view class="group0">
+      <view class="avatar_layout">
+        <image class="userinfo-avatar" src="{{player2}}" background-size="cover"></image>
+      </view>
+      <view class="nametitle">{{player2Name}}</view>
+    </view>
+  </view>
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showMatch}}"></view>
+  <image class="modal-image" mode="widthFix" src="{{countDownImages[countDownIndex]}}" wx:if="{{showMatch}}"></image>
+</view>
