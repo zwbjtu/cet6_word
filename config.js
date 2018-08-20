@@ -12,7 +12,7 @@ var config = {
     // 下面的地址配合云端 Demo 工作
     service: {
         host,
-        appid: 'wx3b47f29abd507064',
+        appid: 'wx74ea43dd24dd8874',
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,
 
