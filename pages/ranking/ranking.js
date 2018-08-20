@@ -7,7 +7,7 @@ var tmpFCPKSubLevels = [];
 
 Page({
   data: {
-    motto: 'CET4WORD',
+    motto: 'CET6WORD',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -26,7 +26,7 @@ Page({
     crownlist:[],
     idxbgcolorlist:[],
     page_index:0,
-    categoryID:31,
+    categoryID:32,
     myCategoryRanking:0,
     myGlobalRanking:0,
     showCategoryList:false,
@@ -156,7 +156,7 @@ Page({
     this.initData();
     this.setData({
       rankingType: 3,
-      categoryID: 31,
+      categoryID: 32,
       //datalist: this.data.friendlist,
       myGlobalRanking: app.globalData.userRanking,
       //categoryList: app.globalData.commonList,

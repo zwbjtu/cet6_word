@@ -62,7 +62,7 @@ Page({
   onShareAppMessage: function (ops) {
     if (ops.from == 'button') {
       return {
-        title: '[有人@我]看看你的四级词汇量能排第几',
+        title: '[有人@我]看看你的六级词汇量能排第几',
         path: 'pages/home/home',
         imageUrl: 'https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/share/share_invite_logo.png',
         success: function (res) {
@@ -75,7 +75,7 @@ Page({
       }
     } else {
       return {
-        title: '[有人@我]看看你的四级词汇量能排第几',
+        title: '[有人@我]看看你的六级词汇量能排第几',
         path: 'pages/home/home',
         success: function (res) {
           console.log("转发成功:" + JSON.stringify(res));

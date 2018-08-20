@@ -173,7 +173,7 @@ avatarUrl:"https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/avat
   },
   onClickSelf:function(){
     wx.navigateTo({
-      url: '../challenge/challenge?id=31&frompageid=1',
+      url: '../challenge/challenge?id=32&frompageid=1',
     })
   },
   onClickFriend: function () {
@@ -187,7 +187,7 @@ avatarUrl:"https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/avat
       this.showNotOK();
     } else {
       wx.navigateTo({
-        url: '../invitation/invitation?id=31&frompageid=2',
+        url: '../invitation/invitation?id=32&frompageid=2',
       })
     }
    
@@ -205,7 +205,7 @@ avatarUrl:"https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/avat
 
   onClickStudy:function() {
     wx.navigateTo({
-      url: '../study/study?id=31&frompageid=4',
+      url: '../study/study?id=32&frompageid=4',
     })
   },
 
