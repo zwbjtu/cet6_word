@@ -4,8 +4,8 @@ var Session = require('./session');
 
 /***
  * @class
- * 表示登录过程中发生的异常
- */
+ * 表示登录过程中发生的异常 
+ */ 
 var LoginError = (function () {
     function LoginError(type, message) {
         Error.call(this, message);
@@ -120,15 +120,18 @@ var login = function login(options) {
         header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
         header[constants.WX_HEADER_IV] = iv;
 
+      console.log('+++++++++++++ loginUrl:' + options.loginUrl);
+
         // 请求服务器登录地址，获得会话信息
         wx.request({
             url: options.loginUrl,
             header: header,
-            method: options.method,
-            data: options.data,
+            method: options.method,   
+            // data: options.data,
+            data:{app_type:'cet6'},  
             success: function (result) {
                 var data = result.data;
-
+  
                 // 成功地响应会话信息
                 if (data && data.code === 0 && data.data.skey) {
                     var res = data.data
