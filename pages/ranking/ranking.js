@@ -182,6 +182,8 @@ Page({
       crownlist: this.data.crownlist,
       idxbgcolorlist: this.data.idxbgcolorlist,
     });
+
+    this.getScoreInfo();
   },
 
   loadFavoriteCategory: function () {
@@ -519,5 +521,39 @@ Page({
         console.log(res)
       }
     }
+  },
+  getScoreInfo: function () {
+    var that = this;
+    qcloud.request({
+      url: config.service.getScoreInfo,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: { //这里写你要请求的参数
+        openId: app.globalData.openId,
+      },
+      success: (response) => {
+        console.log('请求 getScoreInfo 成功 statusCode:' + response.statusCode);
+        if (response.statusCode == 200) {
+          app.globalData.scoreInfo = response.data.data;
+          console.log(response.data.data);
+          app.globalData.totalScore = app.globalData.scoreInfo.totalScore;
+          app.globalData.userRanking = app.globalData.scoreInfo.worldRanking;
+          app.globalData.total = app.globalData.scoreInfo.total;
+          console.log('updateScoreInfoCallBack total:' + app.globalData.total);
+          console.log(app.globalData.updateScoreInfoCallBack)
+          if (app.globalData.updateScoreInfoCallBack != null) {
+            app.globalData.updateScoreInfoCallBack(app.globalData.scoreInfo);
+          }
+
+          this.setData({
+            myGlobalRanking: app.globalData.userRanking,
+          });
+        }
+      },
+      fail: function (err) {
+        console.log('请求失败', err);
+      }
+    });
   },
 })
