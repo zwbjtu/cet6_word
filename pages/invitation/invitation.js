@@ -142,7 +142,7 @@ Page({
       return {
         title: '[有人@我]就问你多久没赢过我',
         path: 'pages/home/home',
-        imageUrl: 'https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/share/share_invite_logo.png',
+        imageUrl: '/images/share_invite_logo.png',
         success: function (res) {
           console.log("转发成功:" + JSON.stringify(res));
         },
@@ -154,7 +154,7 @@ Page({
       return {
         title: '[有人@我]就问你多久没赢过我',
         path: 'pages/home/home',
-        imageUrl: 'https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/share/share_invite_logo.png',
+        imageUrl: '/images/share_invite_logo.png',
         success: function (res) {
           console.log("转发成功:" + JSON.stringify(res));
         },

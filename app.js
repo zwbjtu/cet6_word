@@ -9,7 +9,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     qcloud.setLoginUrl(config.service.loginUrl);
-    this.doLogin();
+    
     this.getUserInfo();
     this.getLevelRule();
     this.getCategory(); 
@@ -74,6 +74,7 @@ App({
     console.log('setUserInfo:')
     console.log(res)
     this.globalData.userInfo = res.userInfo;
+    this.doLogin();
   },
   getUserInfo: function() {
     // 获取用户信息
@@ -87,6 +88,7 @@ App({
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               console.log(res)
+              this.doLogin();
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -164,27 +166,6 @@ App({
         if (response.statusCode == 200) {
           that.globalData.rule = response.data.data;
           console.log(that.globalData.rule);
-        }
-      },
-      fail: function(err) {
-        console.log('请求 LevelRule 失败', err);
-      }
-    });
-  },
-  getWorldRankingList: function() {
-    var that = this;
-    qcloud.request({
-      url: config.service.getWorldRankingList,
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data: { //这里写你要请求的参数
-        openId: that.globalData.openId,
-      },
-      success: (response) => {
-        console.log('请求成功  getWorldRankingList statusCode:' + response.statusCode);
-        if (response.statusCode == 200) {
-          console.log(response.data);
         }
       },
       fail: function(err) {
@@ -340,7 +321,7 @@ App({
   },
   uploadScoreInfo: function(id, score) {
     var that = this;
-    console.log('uploadScoreInfo id:' + id + ', score:' + score);
+    console.log('==__++__++__++_++++++> uploadScoreInfo id:' + id + ', score:' + score + ' totalScore:' + that.globalData.totalScore);
     qcloud.request({
       url: config.service.updateScoreInfo,
       header: {
@@ -354,6 +335,7 @@ App({
         current_score: score,
         user_experience: 10,
         victorynum: that.globalData.scoreInfo.victorynum,
+        app_type: "cet6",
       },
       success: (response) => {
         console.log('上传 uploadScoreInfo 成功 statusCode:' + response.statusCode);
@@ -553,7 +535,7 @@ App({
       data: {
         encryptedData: res.encryptedData,
         iv: JSON.stringify(res.iv),
-        appId: 'wx7cf81d27e6c79640',
+        appId: 'wx74ea43dd24dd8874',
         openId: that.globalData.openId,
       },
       success: function (res) {
@@ -570,6 +552,33 @@ App({
       }
     })
   },
+  getCategoryRanking: function (id) {
+    console.log('getCategoryRanking id:' + id + ' app.globalData.openId:' + app.globalData.openId);
+    var that = this;
+    qcloud.request({
+      url: config.service.getRankingList,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {//这里写你要请求的参数
+        openid: app.globalData.openId,
+        page_index: 0,
+        category_id: id,
+      },
+      success: (response) => {
+        console.log('请求成功  getCategoryRanking statusCode:' + response.statusCode);
+        if (response.statusCode == 200) {
+          console.log(response.data);
+          this.setData({
+            myCategoryRanking: response.data.data.rank,
+          });
+        }
+      },
+      fail: function (err) {
+        console.log('请求 getCategoryRanking 失败', err);
+      }
+    });
+  }, 
   /*
   saveContinueWinToStorage: function (total) {
     console.log('save achievementDetail:'+total);

@@ -36,13 +36,16 @@ var getWxLoginResult = function getLoginCode(callback) {
                 },
                 fail: function (userError) {
                   //jacksplwxy：用户拒绝授权后，打开设置，让用户进行授权
-                  wx.showModal({
+                  console.log('123234233');
+                  /*wx.showModal({
                     title: '登录失败!',
                     content: '请选择允许获取您的公开信息',
+                    showCancel: false,
                     success: (res) => {
                       wx.openSetting({
                         success: (res) => {
                           if (res.authSetting['scope.userInfo']) {
+                            console.log('123234233');
                             wx.getUserInfo({
                               success: function (userResult) {
                                 callback(null, {
@@ -57,7 +60,7 @@ var getWxLoginResult = function getLoginCode(callback) {
                         }
                       })
                     }
-                  })
+                  })*/
                 },
                 //源码：
                 /*fail: function (userError) {

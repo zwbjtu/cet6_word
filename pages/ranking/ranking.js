@@ -21,7 +21,7 @@ Page({
     windowW:0,
     windowH:0,
     challenge:-1,
-    rankingType:3,
+    rankingType:2,
     datalist:[],
     crownlist:[],
     idxbgcolorlist:[],
@@ -155,15 +155,15 @@ Page({
     });
     this.initData();
     this.setData({
-      rankingType: 3,
+      rankingType: 2,
       categoryID: 32,
       //datalist: this.data.friendlist,
       myGlobalRanking: app.globalData.userRanking,
       //categoryList: app.globalData.commonList,
     });
     
-    // this.getWorldRankingList(0);
-    this.getCategoryRankingList(0, this.data.categoryID);
+    this.getWorldRankingList(0);
+    // this.getCategoryRankingList(0, this.data.categoryID);
   },
 
   initData:function(){
@@ -470,7 +470,7 @@ Page({
         }
       },
       fail: function (err) {
-        console.log('请求 LevelRule 失败', err);
+        console.log('请求 getCategoryRankingList 失败', err);
         if (this.data.loading) {
           this.setData({
             loading: false,
@@ -509,5 +509,15 @@ Page({
     });
 
     //this.getCategoryRankingList(0, this.data.categoryID);
+  },
+  onShareAppMessage: function (res) {
+    let that = this
+    return {
+      title: '[有人@我]看看你的四级词汇量能排第几！',
+      path: 'pages/home/home',
+      success: function (res) {
+        console.log(res)
+      }
+    }
   },
 })

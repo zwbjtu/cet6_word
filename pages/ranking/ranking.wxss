@@ -464,7 +464,7 @@ color: #fdaf01;
 }
 
 .scrollview_layout_world {
-  height: 70vh;
+  height: 80vh;
 }
 
 .myRankingItem {
@@ -479,8 +479,10 @@ color: #fdaf01;
 
 .myRankingItemSingle {
   display: flex;
-  width: 100%;
   align-items: center;
+  width: 100%;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   color: rgba(246, 249, 252, 0.5);
   font-size: 0.8rem;
 }
