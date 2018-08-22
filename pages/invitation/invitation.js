@@ -53,9 +53,11 @@ Page({
       showTicker: !this.data.showTicker,
       invitationTitle: this.data.showTicker == false ? '比赛即将开始...' : '等待对方加入'
     });
+    tunnelClass.closeTunnel();
     var tunnel = tunnelClass.createTunnel();
     this.data.tunnel = tunnel;
-    tunnelClass.listenMatchSuccess(this.onHandleMatchSuccess);
+    tunnelClass.setMatchSuccessCb(this.onHandleMatchSuccess);
+    tunnelClass.listenMatchSuccess(null);
     tunnelClass.setListenQuestion(this.onHandleQuestion)
     tunnelClass.listenQuestion(null);
     tunnel.open();
@@ -168,6 +170,7 @@ Page({
 
   onHandleMatchSuccess:function(res){
     var that = this;
+    //tunnelClass.setMatchSuccessCb(null);
     if (res.player2.openId == app.globalData.openId){
       app.globalData.userInfo1 = res.player1;
     }else{

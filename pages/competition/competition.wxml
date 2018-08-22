@@ -30,7 +30,7 @@
     <view class="{{ showFragment == 1? 'type1':'type1hide'}}">
       <view class="context">
         <span class="subject_index_left">(</span>
-        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index">{{questionIndex}}</span>
         <span class="subject_index_right">/{{questionTotal}})</span>
         {{question.title}}
       </view>
@@ -58,7 +58,7 @@
     <view class="{{ showFragment == 2? 'type2':'type2hide'}}">
       <view class="context">
         <span class="subject_index_left">(</span>
-        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index">{{questionIndex}}</span>
         <span class="subject_index_right">/{{questionTotal}})</span>
         {{question.title}}
       </view>
@@ -87,7 +87,7 @@
     <view class="{{ showFragment == 3? 'type3':'type3hide'}}">
       <view class="context">
         <span class="subject_index_left">(</span>
-        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index">{{questionIndex}}</span>
         <span class="subject_index_right">/{{questionTotal}})</span>
         {{question.title}}
       </view>
@@ -106,7 +106,7 @@
     <view class="{{ showFragment == 4? 'type1':'type1hide'}}">
       <view class="context">
         <span class="subject_index_left">(</span>
-        <span class="subject_index">{{questionIndex+1}}</span>
+        <span class="subject_index">{{questionIndex}}</span>
         <span class="subject_index_right">/{{questionTotal}})</span>
         {{question.title}}
       </view>
@@ -133,7 +133,7 @@
     <view class="{{ showFragment == 5? 'type5':'type5hide'}}">
         <view class="context">
           <span class="subject_index_left">(</span>
-          <span class="subject_index">{{questionIndex+1}}</span>
+          <span class="subject_index">{{questionIndex}}</span>
           <span class="subject_index_right">/{{questionTotal}})</span>
           {{question.title}}
         </view>

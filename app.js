@@ -15,7 +15,7 @@ App({
     this.getCategory(); 
     this.getDataFromStorage();
     this.getShareTargeOpenGId();
-    this.getContinueWinFromStorage();
+    //this.getContinueWinFromStorage();
   },
 
   doLogin() { //登录
@@ -56,7 +56,8 @@ App({
       totalScore: 0,
       experience: 0,
       worldRanking: 0,
-      total: 0
+      total: 0,
+      victorynum:0,
     },
     achievementDetail: {
       totalChallenge: 0,
@@ -352,6 +353,7 @@ App({
         category_id: id,
         current_score: score,
         user_experience: 10,
+        victorynum: that.globalData.scoreInfo.victorynum,
       },
       success: (response) => {
         console.log('上传 uploadScoreInfo 成功 statusCode:' + response.statusCode);
@@ -522,6 +524,7 @@ App({
             fail: function (res) {//这个方法就是分享到的是好友，给一个提示
               console.log('fail shareTickets:');
               console.log(res);
+              /*
               wx.showModal({
                 title: '提示',
                 content: '分享好友无效，请分享群',
@@ -532,7 +535,7 @@ App({
                     console.log('用户点击取消')
                   }
                 }
-              })
+              })*/
             }
           })
         }
@@ -567,7 +570,7 @@ App({
       }
     })
   },
-
+  /*
   saveContinueWinToStorage: function (total) {
     console.log('save achievementDetail:'+total);
     this.globalData.continueWinCount = total;
@@ -589,5 +592,5 @@ App({
         console.log("获取 continueWin 数据失败");
       }
     });
-  },
+  },*/
 })

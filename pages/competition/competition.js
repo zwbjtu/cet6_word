@@ -63,7 +63,7 @@ Page({
     userInfo2Score:0,
     userInfo1Answer: 0,
     runawayNotice:false,
-    continueWin:0,
+    gameOver:false,
     pkResultImage:"/images/pk_success.png",
     type1: [{
       'id': 11,
@@ -102,9 +102,9 @@ Page({
     wx.setNavigationBarTitle({
       title: "好友对战"
     })
-    //this.requestQuestionList(this.data.PAGE, this.data.ID);
     this.data.tree = app.globalData.question;
-    this.data.continueWin1 = app.globalData.continueWinCount;
+    this.data.continueWin1 = app.globalData.scoreInfo.victorynum;
+    this.data.continueWin2 = app.globalData.userInfo1.victorynum;
     this.data.categoryID = option.id;
     this.data.frompageID = option.frompageid;
     console.log('tree:');
@@ -113,6 +113,7 @@ Page({
     //tunnelClass.listenQuestion(null);
     tunnelClass.listenGetAnswer(this.onHandleGetAnswer);
     tunnelClass.listenRunawayNotice(this.onHandleRunawayNotice)
+    tunnelClass.setListentunnelStatusCb(this.listentunnelStatusCb)
     this.initQuestionAndAnswer(this.data.curIndex);
   },
 
@@ -122,64 +123,6 @@ Page({
       clearTimeout(this.data.timer);
       this.data.timer = null;
     }
-  },
-
-  initData:function(){    
-    this.setData({
-      empirical: 999,
-      ranking: 0,
-      empiricalV: "第" + this.data.empirical +"题",
-      levelV:this.data.level+"级",
-      scoreStr: this.data.score+'分',
-      answer: this.data.answer,
-    });
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: '#735cd9',
-    });
-    wx.setNavigationBarTitle({
-      title: "对战"
-    })
-    //this.requestQuestionList(this.data.PAGE, this.data.ID);
-    this.initQuestionAndAnswer(this.data.showFragment);
-  },
-  requestQuestionList: function (page, id) {
-    var that = this;
-    qcloud.request({
-      url: config.service.requestQuestionList,
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data: {//这里写你要请求的参数
-        category_id: id,
-        page_index: page
-      },
-      success: (response) => {
-        console.log('请求成功 statusCode:' + response.statusCode);
-        console.log(response.data.data);
-        that.data.tree = response.data.data;
-
-        if (that.data.tree == null || that.data.tree.length == 0) {
-          this.setData({
-            gameOver: true,
-            showFragment: 0,
-          });
-          this.cancelTimer();
-          //this.saveCacheData();
-          //this.showUpgradeDialog();
-        } else {
-          if (that.data.PAGE == 0) {
-            that.initData();
-          } else {
-            that.initQuestionAndAnswer(that.data.curIndex);
-          }
-        }
-        console.log(that.data.tree);
-      },
-      fail: function (err) {
-        console.log('请求失败', err);
-      }
-    });
   },
 
   initQuestionAndAnswer(index) {
@@ -197,7 +140,7 @@ Page({
     this.data.character.push('../../images/ic_b.png');
     this.data.character.push('../../images/ic_c.png');
     this.data.character.push('../../images/ic_d.png');
-    console.log(' section ' + index + ' data.type:' + section.type);
+    console.log(' section ' + this.data.questionIndex + ' question data:' + section);
     this.setData({
       answer: this.data.answer,
       question: section,
@@ -207,7 +150,7 @@ Page({
       empiricalV: "第" + section.index + "题",
       characterBgColor: this.data.characterBgColor,
       character: this.data.character,
-      questionIndex: this.data.questionIndex,
+      questionIndex: section.id,
     })
     this.data.questionIndex++;
     this.data.pendEvent = false;
@@ -315,7 +258,9 @@ Page({
   startCountDown:function(duration){
     var that = this;
     if (that.data.progress > 0){
+      this.cancelTimer();
       this.data.timer = setTimeout(function () {
+        that.data.timer = null;
         that.setData({
           progress : that.data.progress - 1
         })
@@ -329,7 +274,10 @@ Page({
   onHandleQuestion: function (res) {
     console.log('enter onHandleQuestion!')
     console.log(res)
-    
+    if (this.data.gameOver){
+      console.log('gameOver!!!')
+      return;
+    }
     var choicePlayer2 = res.choicePlayer1[0] == app.globalData.openId ? res.choicePlayer2 : res.choicePlayer1;
     var ret = this.updateAnswerBgOnly(choicePlayer2[1], false);
     if (ret) {
@@ -368,6 +316,7 @@ Page({
     }
   },
   stopPK:function(){
+    this.data.gameOver = true;
     this.cancelTimer();
     var that = this
     console.log(' userInfo:' + that.data.userInfo1Score)
@@ -375,11 +324,13 @@ Page({
     var pkImage = that.data.userInfo1Score > that.data.userInfo2Score ? '/images/pk_success.png' : '/images/pk_failed.png';
     if (that.data.userInfo1Score > that.data.userInfo2Score){
       this.data.continueWin1 += 1;
-      app.saveContinueWinToStorage(this.data.continueWin1);
+      app.globalData.scoreInfo.victorynum += 1;
+      //app.saveContinueWinToStorage(this.data.continueWin1);
     }else{
       this.data.continueWin2 += 1;
+      app.globalData.scoreInfo.victorynum = 0;
       this.data.continueWin1 = 0;
-      app.saveContinueWinToStorage(0);
+      //app.saveContinueWinToStorage(0);
     }
 
     if (this.data.continueRight2 < this.data.continue2) {
@@ -388,15 +339,16 @@ Page({
     if (this.data.continueRight < this.data.continue1) {
       this.data.continueRight = this.data.continue1;
     }
+    var win = that.data.userInfo1Score > that.data.userInfo2Score ? true:false;
     setTimeout(function () {
       that.setData({
-        showFailed: !that.data.showFailed,
+        showFailed: true,
         showFragment: -1,
         continueRight: that.data.continueRight,
         continueRight2: that.data.continueRight2,
         pkResultImage: pkImage,
-        continueWin1: that.data.continueWin1,
-        continueWin2: that.data.continueWin2,
+        continueWin1: win ? that.data.continueWin1:0,
+        continueWin2: win == false?that.data.continueWin2:0,
       })
     }, 1000);
     tunnelClass.closeTunnel();
@@ -412,6 +364,10 @@ Page({
   onHandleRunawayNotice:function(res){
     console.log('enter onHandleRunawayNotice!')
     console.log(res)
+    if (this.data.gameOver) {
+      console.log('gameOver!!!')
+      return;
+    }  
     this.data.runawayNotice = true;
     this.stopPK();
     this.showRunaway('对方已逃跑')
@@ -458,4 +414,19 @@ Page({
       }
     }
   },
+  listentunnelStatusCb:function(status){
+    console.log('listentunnelStatus:'+status)
+    if(this.data.runawayNotice){
+      return;
+    }
+    if (this.data.gameOver) {
+      console.log('gameOver!!!')
+      return;
+    }    
+    if (status == 2 || status == 3 || status == 5){
+      this.data.runawayNotice = true;
+      this.stopPK();
+      this.showRunaway('对方已逃跑')      
+    }
+  }
 })
