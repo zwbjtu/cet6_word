@@ -46,6 +46,11 @@
     <button class="item1" id="3" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
       <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/home_rank2.png'></image>
     </button> 
+
+    <button class="item1" id="5" open-type="getUserInfo"  bindgetuserinfo="getUserInfoFun">
+      <image class="item2"  mode="widthFix" src='https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/btn_more_minips.png'></image>
+    </button> 
+
     </view>
  
   <button class="invite_friends" open-type="share" >

@@ -1,0 +1,60 @@
+
+page{
+  display:block;
+  min-height: 100%;
+  background-size: cover;
+  background-image: url('https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/category/bg_category.jpg'); 
+}
+
+.control{
+    width: 100%;
+    height: 100%;
+}
+
+.scrollview_layout {
+  height: 100vh;
+}
+
+.cover_bg{
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 20rpx;
+}
+
+.storelayout{
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+}
+
+.minip_mkwz{
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+  align-items:center;
+}
+
+.logo_image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.logo_text{
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items: center;
+  width: 400rpx;
+  height: 100rpx;
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  border-radius: 50rpx;
+  background-color: #7243c7;
+}

@@ -1,0 +1,31 @@
+<view class="control">
+  <scroll-view class="scrollview_layout" scroll-y="true">
+    <image mode="widthFix" src='/images/minipstore_cover.png' bindtap="onClickCover" class="cover_bg"></image>
+    <view class="storelayout">
+
+       <view class="minip_mkwz">
+           <image  class="logo_image" mode="widthFix" src="https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/minipstore/logo_mkwz.png"></image>
+            <navigator  class='logo_text' target="miniProgram" open-type="navigate" app-id="wx7cf81d27e6c79640" path="" extra-data="" version="release">模考王者</navigator>
+       </view>
+
+       <view class="minip_mkwz">
+           <image  class="logo_image" mode="widthFix" src="https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/minipstore/logo_cet6words.png"></image>
+            <navigator class='logo_text' target="miniProgram" open-type="navigate" app-id="wx3b47f29abd507064" path="" extra-data="" version="release">英语四级百词斩</navigator>
+       </view>
+
+       <view class="minip_mkwz">
+           <image  class="logo_image" mode="widthFix" src="https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/minipstore/logo_km1.png"></image>
+            <navigator class='logo_text' target="miniProgram" open-type="navigate" app-id="wxf54ff9fa9c9796c2" path="" extra-data="" version="release">驾考科目一</navigator>
+           
+
+       </view>
+
+       <view class="minip_mkwz">
+           <image  class="logo_image" mode="widthFix" src="https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/minipstore/logo_km4.png"></image>
+            <navigator class='logo_text' target="miniProgram" open-type="navigate" app-id="wx11d73de502dd382c" path="" extra-data="" version="release">驾考科目四</navigator>
+       </view>
+
+
+    </view>
+  </scroll-view>
+</view>

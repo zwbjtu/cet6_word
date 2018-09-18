@@ -209,6 +209,12 @@ avatarUrl:"https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/avat
     })
   },
 
+  onClickMore:function() {
+    wx.navigateTo({
+      url: '../minipstore/minipstore?id=32',
+    })
+  },
+
   getUserInfoFun: function (e) {
     var S = this;
     console.log("home page onClick id:" + e.target.id);
@@ -261,6 +267,8 @@ avatarUrl:"https://lg-6enwjric-1256925828.cos.ap-shanghai.myqcloud.com/home/avat
       // } else {
         this.onClickStudy();
       // }
+    } else if (id == 5) { 
+      this.onClickMore();
     }
   },
   onShow: function (options) {
